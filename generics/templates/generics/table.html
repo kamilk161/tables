@@ -1,0 +1,27 @@
+{% load get_tag %}
+{% block content %}
+    <table class="{{ table_classes }}">
+        <thead>
+            <tr>
+                {% for column in columns %}
+                    {% if column in css_classes %}
+                        <th class="{{ css_classes|get_item:column }}">
+                            {{ column }}
+                        </th>
+                    {% else %}
+                        <th>{{ column }}</th>
+                    {% endif %}
+
+                {% endfor %}
+            </tr>
+        </thead>
+
+        {% for row in rows %}
+            <tr>
+                {% for value in row %}
+                    <td>{{ value }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
